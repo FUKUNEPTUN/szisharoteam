@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>JS Matrix Multiplication</h1>
+    <div>
+        <p>
+            'A' tábla
+        </p>
+        <label for="szam1">'A' mátrix sora</label>
+        <input type="number" name="szam1" id="elsomatrixsor">
+        <label for="szam2">'A' mátrix oszlopa</label>
+        <input type="number" name="szam2" id="elsomatrixoszlop">
+    </div>
+    <div>
+        <p>
+            'B' tábla
+        </p>
+        <label for="szam3">'B' mátrix sora</label>
+        <input type="number" name="szam3" id="masodikmatrixsor">
+        <label for="szam4">'b' mátrix sora</label>
+        <input type="number" name="szam4" id="masodikmatrixoszlop">
+    </div>
+    <div>
+        <input type="submit" value="Olaaa" onclick="Szamit()">
+    </div>
+
+    <script>
+        function Szamit() {
+            let aOszlop = document.getElementById('elsomatrixoszlop').value;
+            let aSor = document.getElementById('elsomatrixsor').value;
+            let bSor = document.getElementById('masodikmatrixsor').value;
+            let bOszlop = document.getElementById('masodikmatrixoszlop').value;
+            Math.random(1, 10)
+            let test = 1;
+            var i, j, k;
+            if (aOszlop != bSor) {
+                alert("AZ 'A' mátrix oszlopainak száma egyezzen meg a 'B' oszlop soraival ")
+            } else {
+
+                var arr1 = new Array(aSor);
+                for (var i = 0; i < aSor; i++) {
+                    arr1[i] = new Array(aOszlop);
+                }
+                for (let i = 0; i < aSor; i++) {
+                    for (let j = 0; j < aOszlop; j++) {
+                        arr1[i][j] = test++;
+                    }
+                }
+
+                var arr2 = new Array(bSor);
+                test = 100;
+                for (var i = 0; i < bSor; i++) {
+                    arr2[i] = new Array(bOszlop);
+                }
+                for (let i = 0; i < bSor; i++) {
+                    for (let j = 0; j < bOszlop; j++) {
+                        arr2[i][j] = test++;
+                    }
+                }
+
+                var arr3 = new Array(aSor);
+                for (var i = 0; i < aSor; i++) {
+                    arr3[i] = new Array(bOszlop);
+                }
+            }
+
+            document.write("Matrix A (", aSor, "x", aOszlop, "):<br>");
+            for (i = 0; i < aSor; i++) {
+                for (j = 0; j < aOszlop; j++)
+                    document.write(arr1[i][j] + " ");
+                document.write("<br>");
+            }
+
+            document.write("Matrix B (", bOszlop, "x", bSor, "):<br>");
+            for (i = 0; i < bSor; i++) {
+                for (j = 0; j < bOszlop; j++)
+                    document.write(arr2[i][j] + " ");
+                document.write("<br>");
+            }
+
+            for (i = 0; i < aSor; i++) {
+                for (j = 0; j < bOszlop; j++) {
+                    for (k = 0; k < aSor; k++)
+                        arr3[i][j] = arr3[i][j] + arr1[i][k] * arr2[k][j];
+                }
+            }
+            document.write("Output:<br>");
+
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 3; j++)
+                    document.write(arr3[i][j] + " ");
+                document.write("<br>");
+            }
+        }
+    </script>
+</body>
+
+</html>
